@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=`, initial-scale=1.0">
+        <title>Advanced Fetch Concepts</title>
+    </head>
+    <body>
+        <h1>Fetch</h1>
+        <script>
+            const url = 'https://jsonplaceholder.typicode.com/todos/1'
+            fetch(url)
+            .then(resp => {
+                if(resp.ok){
+                    console.log('success', resp.status)
+                    return "cool"
+                }
+                else {
+                    throw new Error("404")
+                }
+            })
+            .then(resp => console.log(resp))
+            .catch(e => console.log("bad request: ", e));
+
+            // const url = 'https://jsonplaceholder.typicode.com/todos/1'
+            // async function getResponse(url) {
+            // const promise = fetch(url)
+            // const response = await promise
+            // const data = await response
+            // if(data.ok){
+            //     console.log("succes: ", data.status)
+            // }
+            // }
+            // getResponse(url)
+        </script>
+    </body>
+</html>
