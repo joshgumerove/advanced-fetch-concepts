@@ -14,14 +14,15 @@
             .then(resp => {
                 if(resp.ok){
                     console.log('success', resp.status)
-                    return "cool"
+                    console.log(resp)
+                    return resp.text()
                 }
                 else {
                     throw new Error("404")
                 }
             })
             .then(resp => console.log(resp))
-            .catch(e => console.log("bad request: ", e));
+            .catch(e => console.log("bad request: ", e)); // only for netowrk errors (usually to an invalid URL)
 
             // const url = 'https://jsonplaceholder.typicode.com/todos/1'
             // async function getResponse(url) {
