@@ -16,7 +16,7 @@
                     console.log('success', resp.status)
                     console.log(resp)
                     // return resp.text() // this is text
-                    return resp.json()
+                    return resp.json() // does not give us back json (but rather a JS object)
                 }
                 else {
                     throw new Error("404")
