@@ -22,7 +22,10 @@
             corrupti? Quisquam!</p>
         <script>
                 const url = 'https://jsonplaceholder.typicode.com/todos/1'
-                const req = new Request(url, {}) // note this constructor function
+                const req = new Request(url) // note this constructor function
+                const headers = new Headers()
+                headers.append("Accept", "text/xml") // this helps segregate code
+                let promise = fetch(req)
                 // if do not provide any options --> default to a GET request
         </script>
     </body>
