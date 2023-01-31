@@ -30,10 +30,13 @@
         <script>
             // fetch public api address and display it to the screen
             const url = "https://worldtimeapi.org/api/timezone/america/new_york"
-            fetch(url)
+            fetch(url, {
+                headers: {
+                    "Accept": "application/json"
+                }
+            })
             .then(resp => {
                 if(resp.status === 200){
-                    console.log("success: ", resp.status)
                     return resp.json()
                 }
                 else {
