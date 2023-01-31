@@ -31,6 +31,7 @@
             // fetch public api address and display it to the screen
             const url = "https://worldtimeapi.org/api/timezone/america/new_york"
             fetch(url, {
+                method: "GET",
                 headers: {
                     "Accept": "application/json"
                 }
