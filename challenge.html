@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-color: yellow;
+            }
+        </style>
+        <title>Fetch Challenge</title>
+    </head>
+    <body>
+        <h1>Fetch Challenge</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At
+            asperiores eius quod cupiditate eveniet laborum. Quia itaque veniam
+            praesentium optio earum voluptas nemo aliquam illum totam vel
+            tempore, autem fugiat iste magnam eius atque eos adipisci quidem
+            sapiente velit porro provident commodi incidunt? Quam facilis
+            assumenda consequuntur odit unde repellendus, doloribus pariatur
+            sapiente exercitationem eaque mollitia voluptatum impedit vitae
+            asperiores ea nostrum, repudiandae delectus nam deleniti commodi.
+            Porro odit amet qui reprehenderit laudantium consequatur minima?
+            Officia obcaecati autem itaque ea possimus. Architecto ex
+            reprehenderit molestias rem nemo recusandae molestiae, nostrum ipsam
+            ipsum voluptatibus, provident hic et pariatur eaque, dolorum
+            suscipit!</p>
+        <h1 id="ip-address">Replace this with AP address</h1>
+        <script>
+            // fetch public api address and display it to the screen
+            const url = "https://worldtimeapi.org/api/timezone/america/new_york"
+            fetch(url)
+            .then(resp => {
+                if(resp.status === 200){
+                    console.log("success: ", resp.status)
+                    return resp.json()
+                }
+                else {
+                    throw new Error("bad request")
+                }
+            })
+            .then(data => {
+                const replacementText = document.getElementById("ip-address")
+                replacementText.innerHTML = data.client_ip
+            })
+            .catch(e => console.log(e))
+        </script>
+    </body>
+</html>
