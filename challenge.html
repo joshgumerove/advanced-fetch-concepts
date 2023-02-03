@@ -7,10 +7,16 @@
         <style>
             body {
                 background-color: yellow;
+                text-align: center;
             }
 
             #image-button {
                 cursor: pointer;
+            }
+
+            img {
+                display: block;
+                margin: auto;
             }
         </style>
         <title>Fetch Challenge</title>
@@ -62,11 +68,23 @@
             const otherURL = "./random-image.jpg"
 
             function replaceWithImage(){
-                //  fetch(otherURL)
-                // .then(resp => resp.text())
-                // .then(resp => console.log(resp))
                 const img = document.querySelector("img")
-                img.src = otherURL
+                // img.src = otherURL
+                const headers = new Headers()
+                headers.append("Accept", "image/jpeg")
+
+                const request = new Request(otherURL, {
+                    method: "GET",
+                    headers
+                })
+                fetch(request)
+                .then(resp => resp.blob())
+                .then(imgObject => {
+                    const pictureURL = URL.createObjectURL(imgObject)
+                    img.src = pictureURL
+                    console.log("success")
+                })
+                .catch(e => console.log("network error: ", e))
             }
         </script>
     </body>
