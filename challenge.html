@@ -8,6 +8,10 @@
             body {
                 background-color: yellow;
             }
+
+            #image-button {
+                cursor: pointer;
+            }
         </style>
         <title>Fetch Challenge</title>
     </head>
@@ -27,6 +31,8 @@
             ipsum voluptatibus, provident hic et pariatur eaque, dolorum
             suscipit!</p>
         <h1 id="ip-address">Replace this with AP address</h1>
+        <p id="image-button">show image</p>
+        <img>
         <script>
             // fetch public api address and display it to the screen
             const url = "https://worldtimeapi.org/api/timezone/america/new_york"
@@ -49,6 +55,19 @@
                 replacementText.innerHTML = data.client_ip
             })
             .catch(e => console.log(e))
+
+            const currentContent = document.getElementById("image-button")
+            currentContent.addEventListener("click", replaceWithImage)
+
+            const otherURL = "./random-image.jpg"
+
+            function replaceWithImage(){
+                //  fetch(otherURL)
+                // .then(resp => resp.text())
+                // .then(resp => console.log(resp))
+                const img = document.querySelector("img")
+                img.src = otherURL
+            }
         </script>
     </body>
 </html>
