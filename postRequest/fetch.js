@@ -16,6 +16,8 @@ let options = {
 
 let req = new Request(url, options);
 
+const div = document.getElementById("results");
+
 fetch(req)
   .then((resp) => {
     if (resp.ok) {
@@ -23,5 +25,11 @@ fetch(req)
     }
     throw new Error("there has been an error");
   })
-  .then((data) => console.log(data))
+  .then((data) => {
+    div.innerHTML = `
+    <p>the posted data is the following:</p>
+    <h1>Title: ${data.title}</h1>
+    <h2>Body: ${data.body}</h2>
+    `;
+  })
   .catch((err) => console.log(err));
