@@ -78,7 +78,11 @@
                     headers
                 })
                 fetch(request)
-                .then(resp => resp.blob())
+                .then(resp => {
+                if(resp.ok){ // tells if there are any HTTP errors
+                    return resp.blob()
+                }
+                throw new Error(`bad request challenge: ${resp.status}: ${resp.statusText}`)})
                 .then(imgObject => {
                     const pictureURL = URL.createObjectURL(imgObject)
                     img.src = pictureURL
